@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+padding: 0;
+box-sizing: border-box;
+background-color: var(--soft-blush);
+}
+
+:root {
+    --soft-blush: #fadde1ff;
+    --soft-blossom: #ffc4d6ff;
+    --baby-pink: #ffa6c1ff;
+    --bubblegum-tint: #ff87abff;
+    --wild-strawberry: #ff5d8fff;
+    --cotton-candy: #ff97b7ff;
+    --baby-pink-2: #ffacc5ff;
+    --pastel-pink: #ffcad4ff;
+    --cherry-blossom: #f4acb7ff;
+}

@@ -47,23 +47,24 @@ nav {
        padding: 20px; 
     }
 
+    
+    header {
+        background-color: var(--CorPrincipal);
+    }
+    
+    ul li {
+        list-style: none;
+    }
+    
+    ul li:hover {
+        list-style: inside;
+    }
+    
     #logo-header {
         height: 60px;
         width: 60px;
     }
-
-    header {
-        background-color: var(--CorPrincipal);
-    }
-
-    ul li {
-        list-style: none;
-    }
-
-    ul li:hover {
-        list-style: inside;
-    }
-
+    
     .sobre {
         background-color: var(--FundoClaro);
         display: flex;
@@ -97,7 +98,7 @@ nav {
 }
 
 .slide img {
-    width: ;
+    width: 500px;
     display: block;
 }
 
