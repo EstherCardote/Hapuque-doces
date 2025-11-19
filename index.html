@@ -15,16 +15,37 @@
   <body>
     <header>
       <nav>
-        <ul>
-          <li>
-            <a href="/"
-              ><img src="assets/img/logo.png" class="logo-header" alt="Hapuque Doces"
-            /></a>
-          </li>
+        <div class="nav-container">
+          <a href="/" class="logo-link">
+            <img
+              src="assets/img/logo.png"
+              class="logo-header"
+              alt="Hapuque Doces"
+            />
+          </a>
+
+          <!-- Menu Desktop (visível em telas grandes) -->
+          <ul class="menu-desktop">
+            <li><a href="/">INICIO</a></li>
+            <li><a href="html/cardapio.html">CARDAPIO</a></li>
+            <li><a href="html/entregas.html">ENTREGAS</a></li>
+            <li><a href="html/contato.html">CONTATO</a></li>
+          </ul>
+
+          <!-- Botão Hamburger (visível apenas no mobile) -->
+          <button class="menu-hamburger" id="menuToggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <!-- Menu Overlay Mobile -->
+        <ul class="menu-overlay" id="menuOverlay">
           <li><a href="/">INICIO</a></li>
-          <li><a href="../html/cardapio.html">CARDAPIO</a></li>
-          <li><a href="../html/entregas.html">ENTREGAS</a></li>
-          <li><a href="../html/contato.html">CONTATO</a></li>
+          <li><a href="html/cardapio.html">CARDAPIO</a></li>
+          <li><a href="html/entregas.html">ENTREGAS</a></li>
+          <li><a href="html/contato.html">CONTATO</a></li>
         </ul>
       </nav>
     </header>
@@ -189,4 +210,5 @@
 
     <script src="javascript/carrousel.js"></script>
   </body>
+  <script src="javascript/menu.js"></script>
 </html>

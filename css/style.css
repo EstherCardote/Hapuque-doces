@@ -57,37 +57,209 @@ nav ul li {
 }
 
 /* Menu de navegação fixo no topo */
-nav {
+header {
   position: fixed; /* Fixa o menu no topo ao rolar a página */
   top: 0;
   left: 0;
   width: 100%;
   background-color: var(--CorPrincipal);
-  padding: 10px 20px;
+  transition: all 0.3s ease;
   z-index: 1000; /* Garante que o menu fique acima de outros elementos */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil para destacar o menu */
 }
 
-/* Lista de navegação em linha */
-nav ul {
+header nav {
+  background: transparent;
+  padding: 20px 40px;
+  box-shadow: none;
+}
+
+.nav-container {
   display: flex;
-  justify-content: space-around; /* Distribui itens igualmente */
-  align-items: center; /* Centraliza verticalmente */
-  flex-wrap: wrap; /* Permite quebra de linha em telas pequenas */
-  list-style: none;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-/* Remove marcadores da lista */
-ul li {
+/* MENU DESKTOP */
+.menu-desktop {
+  display: none; /* Oculto no mobile por padrão */
   list-style: none;
-  padding: 5px 10px; /* Espaçamento interno para área clicável maior */
+  gap: 35px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
-/* Efeito hover nos itens do menu */
-ul li:hover {
+/* Itens individuais do menu desktop */
+.menu-desktop li {
   list-style: none;
-  transform: translateY(-2px); /* Leve movimento para cima no hover */
+  padding: 0;
+}
+
+/* Links do menu desktop */
+.menu-desktop a {
+  font-size: clamp(14px, 1.5vw, 16px);
+  font-weight: 600;
+  color: var(--CorTercearia);
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 8px 0;
+}
+
+/* Linha animada que aparece abaixo do link no hover */
+.menu-desktop a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--CorTercearia);
+  transition: width 0.3s ease;
+}
+
+/* Expande a linha para 100% da largura no hover */
+.menu-desktop a:hover::after {
+  width: 100%;
+}
+
+/* Mantém cor dos links quando header tem fundo */
+.header-hero.scrolled .menu-desktop a {
+  color: var(--CorTercearia);
+}
+
+/* MENU HAMBURGER */
+/* Botão hamburger de 3 linhas para menu mobile */
+.menu-hamburger {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex; /* Visível no mobile por padrão */
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px;
+  z-index: 1001;
   transition: transform 0.3s ease;
+}
+
+/* Efeito de aumento no hover do botão hamburger */
+.menu-hamburger:hover {
+  transform: scale(1.1);
+}
+
+/* Efeito de aumento no hover do botão hamburger */
+.menu-hamburger:hover {
+  transform: scale(1.1);
+}
+
+/* Linhas individuais do botão hamburger */
+.menu-hamburger span {
+  width: 100%;
+  height: 3px;
+  background: var(--CorTercearia);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+
+/* Primeira linha - rotaciona 45° para formar o X quando menu está ativo */
+.menu-hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+  background: #fff;
+}
+
+/* Segunda linha - fica invisível quando menu está ativo */
+.menu-hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+
+/* Terceira linha - rotaciona -45° para completar o X quando menu está ativo */
+.menu-hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+  background: #fff;
+}
+
+/* MENU OVERLAY */
+/* Menu fullscreen que cobre toda a tela no mobile */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, rgba(65, 45, 36, 0.97) 0%, rgba(102, 103, 102, 0.95) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+}
+
+/* Estado ativo do menu overlay - torna-o visível */
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Itens do menu overlay - começam invisíveis e abaixo da posição final */
+.menu-overlay li {
+  list-style: none;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.4s ease;
+}
+
+/* Itens ficam visíveis e na posição correta quando menu está ativo */
+.menu-overlay.active li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delays progressivos para efeito cascata nos itens do menu */
+.menu-overlay.active li:nth-child(1) { transition-delay: 0.1s; }
+.menu-overlay.active li:nth-child(2) { transition-delay: 0.2s; }
+.menu-overlay.active li:nth-child(3) { transition-delay: 0.3s; }
+.menu-overlay.active li:nth-child(4) { transition-delay: 0.4s; }
+
+/* Links do menu overlay - tamanho grande e elegante */
+.menu-overlay a {
+  font-size: clamp(28px, 5vw, 48px);
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 10px 20px;
+}
+
+/* Linha decorativa que aparece sob os links no hover */
+.menu-overlay a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: var(--CorPrincipal);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+/* Expande a linha para 80% da largura no hover */
+.menu-overlay a:hover::after {
+  width: 80%;
 }
 
 /* Logo do cabeçalho com tamanho fixo */
@@ -784,30 +956,18 @@ iframe {
    ============================================ */
 @media (max-width: 768px) {
   /* NAVEGAÇÃO MOBILE */
-  nav {
-    padding: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
+  header nav {
+    padding: 15px 20px;
   }
 
-  /* Menu empilhado verticalmente em telas pequenas */
-  nav ul {
-    flex-direction: column;
-    text-align: center;
-    padding: 10px 0;
-    gap: 5px;
+ /* Menu desktop oculto no mobile */
+  .menu-desktop {
+    display: none !important;
   }
 
-  /* Itens do menu com mais espaçamento */
-  nav ul li {
-    margin: 8px 0;
-    width: 100%; /* Ocupa largura total */
-  }
-
-  /* Links do menu com área clicável maior */
-  nav ul li a:not(.logo-header) {
-    display: block;
-    padding: 10px 15px;
-    width: 100%;
+  /* Menu hamburger visível no mobile */
+  .menu-hamburger {
+    display: flex !important;
   }
 
   /* Logo com espaçamento inferior */
@@ -1184,10 +1344,14 @@ iframe {
    RESPONSIVIDADE - TABLET (Dispositivos médios)
    ============================================ */
 @media (min-width: 769px) and (max-width: 1024px) {
-  /* NAVEGAÇÃO - Ajustes para tablets */
-  nav ul {
-    gap: 15px;
-    padding: 0 15px;
+  /* Menu desktop visível em tablet */
+  .menu-desktop {
+    display: flex !important;
+  }
+
+  /* Menu hamburger oculto em tablet */
+  .menu-hamburger {
+    display: none !important;
   }
 
   /* CONTEÚDO PRINCIPAL */
@@ -1260,6 +1424,20 @@ iframe {
    RESPONSIVIDADE - TELAS GRANDES
    ============================================ */
 @media (min-width: 1025px) {
+  .menu-desktop {
+    display: flex !important;
+  }
+
+  /* Menu hamburger oculto em desktop */
+  .menu-hamburger {
+    display: none !important;
+  }
+
+  /* Menu overlay nunca deve aparecer em desktop */
+  .menu-overlay.active {
+    display: none !important;
+  }
+  
   /* CARDÁPIO - 3 ou 4 colunas em telas grandes */
   .cardapio {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
