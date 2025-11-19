@@ -73,32 +73,148 @@
         <div class="sobre-content">
           <h2>SOBRE NÓS</h2>
           <p>
-            Na Hapuque’s Doces, produzimos doces artesanais feitos com ingredientes frescos de pequenos produtores da região. 
+            Na Hapuque’s Doces, produzimos doces artesanais feitos com
+            ingredientes frescos de pequenos produtores da região.
           </p>
           <p>
-            Valorizamos a sustentabilidade, a transparência e a tradição, criando sabores únicos que fortalecem nossa comunidade e promovem um consumo responsável. 
+            Valorizamos a sustentabilidade, a transparência e a tradição,
+            criando sabores únicos que fortalecem nossa comunidade e promovem um
+            consumo responsável.
           </p>
-          <p>
-            Cada doce carrega cuidado, origem e propósito.
-          </p>
+          <p>Cada doce carrega cuidado, origem e propósito.</p>
         </div>
       </section>
 
-      <section class="mvv">
-        <div class="carrossel-container">
-          <div class="carrossel-inner">
-            <div class="slide">
-              <img src="assets/img/doce.png" alt="" />
-            </div>
+      <section class="galeria-carrossel">
+        <h2 class="galeria-titulo">NOSSOS DOCES</h2>
+        <div class="carrossel-galeria-container">
+          <button
+            class="carrossel-btn carrossel-btn-prev"
+            aria-label="Anterior"
+          >
+            ❮
+          </button>
 
-            <div class="slide">
-              <img src="assets/img/doce2.png" alt="" />
-            </div>
-
-            <div class="slide">
-              <img src="assets/img/doce3.png" alt="" />
+          <div class="carrossel-galeria-wrapper">
+            <div class="carrossel-galeria-track">
+              <div class="carrossel-galeria-slide">
+                <img src="assets/img/doce.png" alt="Doce 1" />
+                <div class="carrossel-overlay">
+                  <span>🍰</span>
+                  <p>Brigadeiro Gourmet</p>
+                </div>
+              </div>
+              <div class="carrossel-galeria-slide">
+                <img src="assets/img/doce2.png" alt="Doce 2" />
+                <div class="carrossel-overlay">
+                  <span>🧁</span>
+                  <p>Torta de Morango</p>
+                </div>
+              </div>
+              <div class="carrossel-galeria-slide">
+                <img src="assets/img/doce3.png" alt="Doce 3" />
+                <div class="carrossel-overlay">
+                  <span>🍪</span>
+                  <p>Brownie Especial</p>
+                </div>
+              </div>
+              <div class="carrossel-galeria-slide">
+                <img src="assets/img/doce4.png" alt="Doce 4" />
+                <div class="carrossel-overlay">
+                  <span>🎂</span>
+                  <p>Bolo de Chocolate</p>
+                </div>
+              </div>
+              <div class="carrossel-galeria-slide">
+                <img src="assets/img/doce5.png" alt="Doce 5" />
+                <div class="carrossel-overlay">
+                  <span>🍮</span>
+                  <p>Pudim Caseiro</p>
+                </div>
+              </div>
+              <div class="carrossel-galeria-slide">
+                <img src="assets/img/doce6.png" alt="Doce 6" />
+                <div class="carrossel-overlay">
+                  <span>🥐</span>
+                  <p>Croissant de Chocolate</p>
+                </div>
+              </div>
+              <div class="carrossel-galeria-slide">
+                <img src="assets/img/doce.png" alt="Doce 7" />
+                <div class="carrossel-overlay">
+                  <span>🍩</span>
+                  <p>Donuts Artesanal</p>
+                </div>
+              </div>
+              <div class="carrossel-galeria-slide">
+                <img src="assets/img/doce2.png" alt="Doce 8" />
+                <div class="carrossel-overlay">
+                  <span>🧈</span>
+                  <p>Pão de Mel</p>
+                </div>
+              </div>
+              <div class="carrossel-galeria-slide">
+                <img src="assets/img/doce3.png" alt="Doce 9" />
+                <div class="carrossel-overlay">
+                  <span>🍰</span>
+                  <p>Cheesecake</p>
+                </div>
+              </div>
             </div>
           </div>
+
+          <button class="carrossel-btn carrossel-btn-next" aria-label="Próximo">
+            ❯
+          </button>
+        </div>
+
+        <!-- Indicadores de slides -->
+        <div class="carrossel-indicators">
+          <button
+            class="indicator active"
+            data-slide="0"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            class="indicator"
+            data-slide="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            class="indicator"
+            data-slide="2"
+            aria-label="Slide 3"
+          ></button>
+          <button
+            class="indicator"
+            data-slide="3"
+            aria-label="Slide 4"
+          ></button>
+          <button
+            class="indicator"
+            data-slide="4"
+            aria-label="Slide 5"
+          ></button>
+          <button
+            class="indicator"
+            data-slide="5"
+            aria-label="Slide 6"
+          ></button>
+          <button
+            class="indicator"
+            data-slide="6"
+            aria-label="Slide 7"
+          ></button>
+          <button
+            class="indicator"
+            data-slide="7"
+            aria-label="Slide 8"
+          ></button>
+          <button
+            class="indicator"
+            data-slide="8"
+            aria-label="Slide 9"
+          ></button>
         </div>
       </section>
 
@@ -224,8 +340,9 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
-
+    
+    <script src="javascript/menu.js"></script>
     <script src="javascript/carrousel.js"></script>
   </body>
-  <script src="javascript/menu.js"></script>
+  
 </html>

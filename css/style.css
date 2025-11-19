@@ -68,6 +68,13 @@ header {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil para destacar o menu */
 }
 
+/* Estado do header após rolar a página - adiciona fundo e sombra */
+header.scrolled {
+  background: rgba(245, 224, 229, 0.98);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
 header nav {
   background: transparent;
   padding: 20px 40px;
@@ -277,7 +284,6 @@ header nav {
 /* Espaçamento do conteúdo principal para não ficar atrás do menu fixo */
 main {
   margin-top: 80px; /* Espaço para o menu fixo (aumentado para mais conforto) */
-  padding: 20px;
   min-height: calc(100vh - 80px); /* Garante altura mínima da página */
 }
 
@@ -487,46 +493,201 @@ main {
 }
 
 
-/* CARROSSEL DE IMAGENS */
-/* Container da seção MVV (Missão, Visão, Valores) */
-.mvv {
-  padding: 50px 20px; /* Padding horizontal responsivo */
-  background-color: var(--CorPrincipal);
+/* ============================================
+   CARROSSEL DE GALERIA
+   ============================================ */
+/* Seção de galeria com carrossel interativo */
+.galeria-carrossel {
+  padding: 100px 20px;
+  background: var(--CorPrincipal);
 }
 
-/* Container do carrossel com largura máxima */
-.carrossel-container {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto; /* Centraliza o carrossel */
-  overflow: hidden; /* Esconde conteúdo que transborda */
-  border-radius: 10px; /* Bordas arredondadas */
+/* Título da seção de galeria */
+.galeria-titulo {
+  text-align: center;
+  font-size: clamp(32px, 6vw, 48px);
+  margin-bottom: 60px;
+  color: var(--CorTercearia);
 }
 
-/* Slides internos do carrossel */
-.carrossel-inner {
+/* Container principal do carrossel com posicionamento relativo */
+.carrossel-galeria-container {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 60px; /* Espaço para os botões */
+}
+
+/* Wrapper que esconde o overflow dos slides */
+.carrossel-galeria-wrapper {
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Track que contém todos os slides - movimento horizontal */
+.carrossel-galeria-track {
   display: flex;
-  transition: transform 0.5s ease-in-out; /* Animação suave entre slides */
-  width: 300%; /* 3 slides = 300% */
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  will-change: transform; /* Otimização de performance */
 }
 
-/* Cada slide individual */
-.slide {
-  flex: 0 0 33.333%; /* Cada slide ocupa 1/3 do container */
-  width: 33.333%;
-  height: auto;
+/* Slide individual do carrossel */
+.carrossel-galeria-slide {
+  min-width: 33.333%; /* 3 slides visíveis no desktop */
+  padding: 10px;
+  box-sizing: border-box;
+  position: relative;
+  aspect-ratio: 1;
+}
+
+/* Imagem do slide */
+.carrossel-galeria-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+/* Efeito zoom na imagem ao passar o mouse */
+.carrossel-galeria-slide:hover img {
+  transform: scale(1.05);
+}
+
+/* Overlay com informações do doce */
+.carrossel-overlay {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(65, 45, 36, 0.95) 70%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+/* Torna o overlay visível no hover */
+.carrossel-galeria-slide:hover .carrossel-overlay {
+  opacity: 1;
+}
+
+/* Ícone emoji no overlay */
+.carrossel-overlay span {
+  font-size: clamp(40px, 6vw, 60px);
+  margin-bottom: 10px;
+  animation: bounceIn 0.5s ease;
+}
+
+/* Nome do doce no overlay */
+.carrossel-overlay p {
+  font-size: clamp(14px, 2.5vw, 18px);
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Animação de entrada do ícone */
+@keyframes bounceIn {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2) rotate(0);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+
+/* Botões de navegação (anterior/próximo) */
+.carrossel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid var(--CorTercearia);
+  color: var(--CorTercearia);
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Efeito hover nos botões */
+.carrossel-btn:hover:not(:disabled) {
+  background: var(--CorTercearia);
+  color: #fff;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Estado desabilitado dos botões */
+.carrossel-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+/* Posicionamento do botão anterior */
+.carrossel-btn-prev {
+  left: 0;
+}
+
+/* Posicionamento do botão próximo */
+.carrossel-btn-next {
+  right: 0;
+}
+
+/* Container dos indicadores de slides */
+.carrossel-indicators {
   display: flex;
   justify-content: center;
-  align-items: center;
+  gap: 12px;
+  margin-top: 30px;
+  flex-wrap: wrap;
 }
 
-/* Imagens dentro dos slides - responsivas */
-.slide img {
-  width: 100%; /* Ocupa toda largura do slide */
-  max-width: 500px; /* Largura máxima */
-  height: auto; /* Mantém proporção */
-  display: block;
-  object-fit: cover; /* Cobre área sem distorcer */
+/* Indicador individual */
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(65, 45, 36, 0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+/* Efeito hover no indicador */
+.indicator:hover {
+  background: rgba(65, 45, 36, 0.6);
+  transform: scale(1.2);
+}
+
+/* Indicador ativo (slide atual) */
+.indicator.active {
+  background: var(--CorTercearia);
+  width: 30px;
+  border-radius: 6px;
 }
 
 /* SEÇÃO: OS MAIS PEDIDOS */
@@ -1176,13 +1337,6 @@ iframe {
     height: 50px;
   }
 
-  /* CONTEÚDO PRINCIPAL */
-  /* Aumenta margem superior para compensar menu expandido */
-  main {
-    margin-top: 220px; /* Ajustado para menu vertical */
-    padding: 15px 10px;
-  }
-
   /* PÁGINA INICIAL (HOME) */
   /* Seção "Sobre" */
   .sobre {
@@ -1201,20 +1355,22 @@ iframe {
     margin-bottom: 15px;
   }
 
-  /* CARROSSEL - Ajustes para mobile */
-  .carrossel-container {
-    max-width: 100%;
-    border-radius: 8px; /* Bordas menos arredondadas em mobile */
+/* CARROSSEL DE GALERIA - Mobile */
+  /* 1 slide visível por vez em mobile */
+  .carrossel-galeria-slide {
+    min-width: 100%;
   }
 
-  .slide img {
-    width: 100%;
-    height: auto;
-    max-width: 100%; /* Garante que não ultrapasse */
+  /* Reduz padding do container em mobile */
+  .carrossel-galeria-container {
+    padding: 0 50px;
   }
 
-  .mvv {
-    padding: 30px 15px; /* Reduz padding em mobile */
+  /* Botões menores em mobile */
+  .carrossel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
   }
 
   /* OS MAIS PEDIDOS - Layout mobile */
@@ -1552,9 +1708,11 @@ iframe {
     display: none !important;
   }
 
-  /* CONTEÚDO PRINCIPAL */
-  main {
-    padding: 25px 30px;
+
+    /* CARROSSEL DE GALERIA - Tablet */
+  /* 2 slides visíveis em tablets */
+  .carrossel-galeria-slide {
+    min-width: 50%;
   }
 
   /* GRID DE CARDÁPIO - 2 colunas em tablets */

@@ -33,7 +33,7 @@ menuOverlay.addEventListener('click', (e) => {
 const scrollIndicator = document.querySelector('.scroll-indicator');
 if (scrollIndicator) {
   scrollIndicator.addEventListener('click', () => {
-    const heroSection = document.querySelector('.hero-fullscreen');
+    const heroSection = document.querySelector('.hapu-fullscreen');
     const nextSection = heroSection.nextElementSibling;
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: 'smooth' });
@@ -41,14 +41,14 @@ if (scrollIndicator) {
   });
 }
 
-// Anima\u00e7\u00e3o do header ao fazer scroll
+// Animação do header ao fazer scroll
 let lastScroll = 0;
-const header = document.querySelector('.header-hero');
+const header = document.querySelector('header');
 
 window.addEventListener('scroll', () => {
   const currentScroll = window.pageYOffset;
   
-  // Adiciona background ao header ap\u00f3s rolar
+  // Adiciona background ao header após rolar
   if (currentScroll > 100) {
     header.classList.add('scrolled');
   } else {
@@ -58,7 +58,7 @@ window.addEventListener('scroll', () => {
   lastScroll = currentScroll;
 });
 
-// Anima\u00e7\u00e3o de entrada dos cards (Intersection Observer)
+// Animação de entrada dos cards (Intersection Observer)
 const observerOptions = {
   threshold: 0.1,
   rootMargin: '0px 0px -50px 0px'
