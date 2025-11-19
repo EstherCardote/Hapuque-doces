@@ -1,6 +1,6 @@
 function filtrarCardapio() {
   const termoBusca = document.getElementById("campoBusca").value.toLowerCase();
-  const itensCardapio = document.querySelectorAll(".doce");
+  const itensCardapio = document.querySelectorAll(".doce-item");
 
   itensCardapio.forEach((item) => {
     const textoDoItem = item.textContent.toLowerCase();
