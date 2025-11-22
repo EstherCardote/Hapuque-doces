@@ -176,11 +176,6 @@ header nav {
   transform: scale(1.1);
 }
 
-/* Efeito de aumento no hover do botão hamburger */
-.menu-hamburger:hover {
-  transform: scale(1.1);
-}
-
 /* Linhas individuais do botão hamburger */
 .menu-hamburger span {
   width: 100%;
@@ -1212,7 +1207,7 @@ textarea {
 
 /* Coluna de texto com informações */
 .retiradas-entregas .texto {
-  flex: 1 1 400px;
+  flex: 1 1 180px;
   /* Flexível com base mínima */
   max-width: 600px;
   min-width: 300px;
@@ -1373,86 +1368,6 @@ textarea {
   line-height: 30px;
 }
 
-/* Formulário de trabalhe */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  width: 100%;
-}
-
-/* Container para campos em duas colunas */
-.duas-colunas {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  /* Quebra em telas pequenas */
-}
-
-/* Label do campo */
-.campo label {
-  font-size: clamp(16px, 2.5vw, 18px);
-  /* Responsivo */
-  margin-bottom: 5px;
-  color: var(--CorTercearia);
-  font-weight: 500;
-}
-
-/* Inputs e textarea do formulário */
-input,
-textarea {
-  padding: 12px 15px;
-  background-color: var(--FundoClaro);
-  border: 1px solid #c5c5c5;
-  border-radius: 8px;
-  /* Bordas mais arredondadas */
-  font-size: clamp(14px, 2vw, 16px);
-  /* Responsivo */
-  font-family: "Cormorant Garamond", serif;
-  transition: all 0.3s ease;
-  width: 100%;
-}
-
-/* Efeito de foco nos campos */
-input:focus,
-textarea:focus {
-  outline: none;
-  border-color: #e9aaaa;
-  box-shadow: 0 0 0 3px rgba(233, 170, 170, 0.2);
-}
-
-/* Área de texto maior para mensagem */
-textarea {
-  height: 180px;
-  resize: vertical;
-  /* Permite redimensionar apenas verticalmente */
-  min-height: 120px;
-}
-
-/* Botão de enviar formulário */
-.btn-enviar {
-  width: 100%;
-  max-width: 200px;
-  padding: 15px;
-  background-color: #e9aaaa;
-  border: none;
-  cursor: pointer;
-  border-radius: 8px;
-  font-size: clamp(16px, 2.5vw, 18px);
-  /* Responsivo */
-  font-weight: bold;
-  color: var(--CorTercearia);
-  transition: all 0.3s ease;
-  align-self: flex-start;
-  /* Alinha à esquerda */
-}
-
-/* Efeito hover no botão */
-.btn-enviar:hover {
-  background-color: #d89999;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
 
 /* ============================================
    FOOTER (RODAPÉ)
@@ -1803,8 +1718,8 @@ footer {
   .retiradas-entregas {
     flex-direction: column;
     text-align: center;
-    padding: 30px 15px;
-    gap: 30px;
+    padding: 20px 12px;
+    gap: 16px;
   }
 
   /* Texto ocupa largura total */
@@ -1817,7 +1732,7 @@ footer {
   /* Título menor em mobile */
   .retiradas-entregas h1 {
     font-size: 28px;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
 
   /* Subtítulos alinhados à esquerda */
@@ -1838,7 +1753,7 @@ footer {
     justify-content: flex-start;
     /* Alinha à esquerda */
     font-size: 0.95em;
-    margin-top: 25px;
+    margin-top: 16px;
     padding: 15px;
   }
 
@@ -1857,7 +1772,7 @@ footer {
   .retiradas-entregas .imagem img {
     width: 100%;
     height: auto;
-    margin: 20px 0;
+    margin: 12px 0;
     display: block;
     border-radius: 10px;
   }
@@ -1949,7 +1864,7 @@ footer {
   .retiradas-entregas {
     flex-direction: column;
     text-align: center;
-    padding: 40px 25px;
+    padding: 20px 25px;
   }
 
   .tempo {
