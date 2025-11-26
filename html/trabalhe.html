@@ -177,26 +177,6 @@
   <script type="text/javascript"
     src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <div id="footer-container"></div>
- <script>
-     fetch("/html/footer.html")
-         .then(res => res.text())
-         .then(html => {
-             document.getElementById("footer-container").innerHTML = html;
-         });
- </script>
-
-    <div vw class="enabled">
-  <div vw-access-button class="active"></div>
-  <div vw-plugin-wrapper>
-    <div class="vw-plugin-top-wrapper"></div>
-  </div>
-</div>
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-<script>
-  new window.VLibras.Widget('https://vlibras.gov.br/app');
-</script>
-
 </body>
 
 </html>
